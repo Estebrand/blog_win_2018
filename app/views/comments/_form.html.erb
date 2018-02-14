@@ -10,22 +10,23 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <p><%= form.label :author %></p>
-    <%= form.text_field :author, id: :comment_author %>
+  
+<!-- Comment Author / User_id as value -->
+  <div class="form-group">
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div class="field">
-    <p><%= form.label :comment_entry %></p>
-    <%= form.text_area :comment_entry, id: :comment_comment_entry %>
+<!-- Comment Entry -->
+  <div class="form-group">
+    <%= form.text_area :comment_entry, class: "form-control" %>
   </div>
 
-  <div class="field">
+<!-- Hidden Post_id -->
+  <div class="form-group">
      <%= form.hidden_field :post_id, value: @post.id %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
+<!-- Submit -->
+  <div class="form-group">
+    <%= form.submit "Submit", class: "btn btn-info btn-sm" %>
   </div>
 <% end %>

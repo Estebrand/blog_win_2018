@@ -10,23 +10,24 @@
       </ul>
     </div>
   <% end %>
+<!-- Blog Title -->
+  <div class="form-group">
+    <%= form.text_field :title, placeholder: "Blog Title", class: "form-control"%>
+  </div>
+  
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+<!-- Blog Author / User_id as Value -->
+  <div class="form-group">
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author, id: :post_author %>
-  </div>
 
-  <div class="field">
-    <%= form.label :blog_entry %>
-    <%= form.text_area :blog_entry, id: :post_blog_entry %>
+<!-- Blog Entry -->
+  <div class="form-group">
+    <%= form.text_area :blog_entry, placeholder: "Blog Entry", class: "form-control" %>
   </div>
-
+<!-- Submit -->
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-info btn-lg" %>
   </div>
 <% end %>

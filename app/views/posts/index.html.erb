@@ -8,13 +8,16 @@
     <!-- Iteration -->
     <% @posts.reverse.each do |post| %>
     <!-- Columns -->
-      <div class="col-md-6">
+      <div class="col col-lg-6">
         <!-- Panels -->
         <div class="panel panel-success">
           <div class="panel-heading">
              <h3><%= post.title %></h3>
-             <h4>By: <%= post.author %>, <%= post.created_at.strftime("%A %m/%d/%y") %></h4>
+             <h4>By: <%= post.user.username %>, <%= post.created_at.strftime("%A %m/%d/%y") %></h4>
+             <!-- AVATAR -->
+              <%= image_tag post.user.avatar.url, class: "pull-right avatar" %>
           </div>
+
           <div class="panel-body">
              <%= post.blog_entry %>
           </div>       

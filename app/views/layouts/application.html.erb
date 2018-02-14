@@ -14,8 +14,19 @@
       <!-- As a link -->
       <nav class="navbar navbar-light bg-faded">
       <h1 class="navbar-brand"><%= link_to "HOME", index_path %></h1>
-      <!-- New Post Button -->
-      <h4 class="navbar-brand btn btn-info btn-large pull-right"><%= link_to 'New Post', new_post_path %></h4>
+      
+ <!-- Devise -->
+    <div class="pull-right">
+      <% if user_signed_in? %>
+      <!-- Edit User -->
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary btn-sm" %>
+      <!-- Sign Out -->
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger btn-sm" %>
+      <% end %>
+    </div>
+
+    <!-- New Post Button -->
+      <h4 class="navbar-brand btn btn-info btn-large"><%= link_to 'New Post', new_post_path %></h4>
     </nav>
        <!-- Nav Goes Here -->
   

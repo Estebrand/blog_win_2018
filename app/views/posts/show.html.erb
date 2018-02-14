@@ -6,8 +6,8 @@
 		  <strong>Title:</strong>
 		  <%= @post.title %>
 		</p>
-
-	<p><strong>By:</strong> <%= @post.author %>, <%= @post.created_at.strftime("%A %m/%d/%y") %></p>
+<!-- Author -->
+	<p><strong>By: </strong> <%= @post.user.username %>, <%= @post.created_at.strftime("%A %m/%d/%y") %></p>
 	</div>
 	<div class="panel-body"
 
@@ -17,24 +17,23 @@
 		</p>
 
 
-			<div id = "comments" class="well">
-				<!-- Display Comments Form Partial -->
+		<div id = "comments" class="well">
+			<!-- Display Comments Form Partial -->
 				<%= render 'comments/form', comment: @comment %>
 			  
-			  <!-- Comments -->
+			 <!-- Comments Iteration-->
 			  <% @post.comments.each do |comment| %>
 			  	<div class="panel panel-info">
 			  		<div class="panel-heading">
-			      	<p><%= comment.author %></p>
+			      	<p><%= comment.user.username %></p>
 				    </div>
 				    <div class="panel-body">
 			      	<p><%= comment.comment_entry %></p>
 			      </div>
 			    </div>
 			  <% end %>
-			  <!-- End Comments -->
-
-			</div>
+			 <!-- End Comments -->
+		</div>
 	</div>
 </div>
 <!-- Buttons -->
