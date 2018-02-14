@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TechTalentBlog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<div class="container">
+
+      <!-- As a link -->
+      <nav class="navbar navbar-light bg-faded">
+      <h1 class="navbar-brand"><%= link_to "HOME", index_path %></h1>
+      <!-- New Post Button -->
+      <h4 class="navbar-brand btn btn-info btn-large pull-right"><%= link_to 'New Post', new_post_path %></h4>
+    </nav>
+       <!-- Nav Goes Here -->
+  
+	   	 <%= yield %>
+	    <!-- Footer Goes Here -->
+	  </div>
+  </body>
+</html>
