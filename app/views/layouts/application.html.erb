@@ -19,6 +19,7 @@
     <div class="pull-right">
       <% if user_signed_in? %>
       <!-- Edit User -->
+        <%= image_tag current_user.avatar.url, class: "avatar" %>
         <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary btn-sm" %>
       <!-- Sign Out -->
         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger btn-sm" %>
