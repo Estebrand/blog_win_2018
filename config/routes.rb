@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
+  # User's posts
+  get 'user_posts' => 'posts#user_posts'
   #get = Retrieve information / data
   get 'index' => 'posts#index' 
   #post = Send information / data

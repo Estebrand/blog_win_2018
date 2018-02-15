@@ -16,7 +16,9 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass' 
 gem 'jquery-rails' 
-# photots
+# Paginate Pages
+gem 'kaminari'
+# photos
 gem 'carrierwave', '~> 1.0'
 # devise for user authentication
 gem 'devise'

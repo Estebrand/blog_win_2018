@@ -7,25 +7,30 @@
 		  <%= @post.title %>
 		</p>
 <!-- Author -->
-	<p><strong>By: </strong> <%= @post.user.username %>, <%= @post.created_at.strftime("%A %m/%d/%y") %></p>
+	<p><strong>By: </strong> <%= link_to @post.user.username, user_posts_path(id: @post.user_id) %>, <%= @post.created_at.strftime("%A %m/%d/%y") %></p>
 	</div>
-	<div class="panel-body"
-
+<!-- AVATAR Validation -->
+   <% if post.user.avatar.url != nil %>
+    <%= image_tag post.user.avatar.url, class: "pull-right avatar" %>
+   <% end %>
+<!-- Blog Entry / Panel Body -->
+	<div class="panel-body">
 		<p>
 		  <strong>Blog entry:</strong>
-		  <%= @post.blog_entry %>
+		  <%= @post.blog_entry.html_safe %>
 		</p>
 
 
 		<div id = "comments" class="well">
 			<!-- Display Comments Form Partial -->
 				<%= render 'comments/form', comment: @comment %>
-			  
 			 <!-- Comments Iteration-->
 			  <% @post.comments.each do |comment| %>
 			  	<div class="panel panel-info">
 			  		<div class="panel-heading">
-			      	<p><%= comment.user.username %></p>
+			      	<!-- Show Author & link to user_posts -->
+			      	<p><%= link_to comment.user.username, user_posts_path(id: comment.user_id) %></p>
+
 				    </div>
 				    <div class="panel-body">
 			      	<p><%= comment.comment_entry %></p>

@@ -3,10 +3,15 @@ class PostsController < ApplicationController
 
   require 'date'
 
+  # Show all user's posts
+  def user_posts
+    @user = User.find(params[:id])
+  end
+
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order(:created_at).reverse_order.page(params[:page])
   end
 
   # GET /posts/1

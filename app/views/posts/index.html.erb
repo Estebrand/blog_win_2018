@@ -6,20 +6,23 @@
 <div class="masonary-row row">
   <div class="posts">
     <!-- Iteration -->
-    <% @posts.reverse.each do |post| %>
+    <% @posts.each do |post| %>
     <!-- Columns -->
       <div class="col col-lg-6">
         <!-- Panels -->
         <div class="panel panel-success">
           <div class="panel-heading">
              <h3><%= post.title %></h3>
-             <h4>By: <%= post.user.username %>, <%= post.created_at.strftime("%A %m/%d/%y") %></h4>
-             <!-- AVATAR -->
+             <!-- Username / time / link_to user post -->
+         <h4>By: <%= link_to post.user.username, user_posts_path(id: post.user_id) %>, <%= post.created_at.strftime("%A %m/%d/%y") %></h4>
+             <!-- AVATAR Validation -->
+             <% if post.user.avatar.url != nil %>
               <%= image_tag post.user.avatar.url, class: "pull-right avatar" %>
+              <% end %>
           </div>
 
           <div class="panel-body">
-             <%= post.blog_entry %>
+             <%= post.blog_entry.html_safe %>
           </div>       
           <div class="panel-footer">
             <!-- Buttons -->
@@ -34,3 +37,5 @@
   </div>
 </div>
 
+<!-- Pagination of Pages Kaminari -->
+  <%= paginate @posts %>
